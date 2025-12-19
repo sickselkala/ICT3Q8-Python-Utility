@@ -1,0 +1,15 @@
+# Ignora i file compilati di Python
+__pycache__/
+*.py[cod]
+
+# Ignora i report CSV generati
+*.csv
+*.xlsx
+
+# Ignora file di sistema
+.DS_Store
+Thumbs.db
+
+# Ignora cartelle virtual env
+venv/
+env/
