@@ -83,7 +83,7 @@ class SankyoDriver:
             if res and res[0] == 0 and len(res) > 3:
                 ict_cmds.stampa_hex_dump(res[3], titolo=f"PAGINA {i}")
 
-    # --- METODO REPORT UNICO (Quello che mancava!) ---
+    # --- METODO REPORT UNICO ---
 
     def genera_report_unico(self):
         if not self._check(): return
