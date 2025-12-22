@@ -13,7 +13,7 @@ Un driver Python completo e un analizzatore di log per il lettore di carte motor
 - Libreria `pyserial`
 
 ## Crediti e Attribuzione
-Questo progetto si basa sulla libreria originale `ict3q8` creata da **Bert** (2018).
+Questo progetto si basa sulla libreria originale `ict3q8` creata da **Bert** (2018) @https://github.com/dd5xl.
 Il codice originale è stato:
 1.  **Aggiornato** per Python 3 moderni.
 2.  **Corretto** nella gestione dei protocolli di Log (CfA/CfC).
