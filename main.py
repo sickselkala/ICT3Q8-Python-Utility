@@ -1,6 +1,6 @@
 '''
 Sankyo Utility Tool
-Version: 1.0.0
+Version: 1.1.0
 Author: Selkala 2025
 License: MIT (see LICENSE file)
 '''
@@ -134,10 +134,12 @@ class SankyoDriver:
         ict_parser.crea_report_unico(perf_data, error_data, full_path)
 
 def main():
-    driver = SankyoDriver()
+    driver = SankyoDriver() # Default inizializza a COM1
+    
     while True:
-        print(f"\n--- SANKYO TOOL ({driver.tipo_banda}) ---")
-        print("1. Connetti")
+        # Mostra la porta configurata nell'intestazione
+        print(f"\n--- SANKYO TOOL ({driver.tipo_banda}) [Porta: {driver.port}] ---")
+        print("1. Connetti / Seleziona Porta")
         print("2. Inizializza")
         print("3. Visualizza Performance (Dump)")
         print("4. Visualizza Errori (Dump)")
@@ -146,7 +148,24 @@ def main():
         print("0. Esci")
         
         sel = input("Scelta: ")
-        if sel == '1': driver.connetti()
+        
+        if sel == '1':
+            # Se è già connesso, avvisa l'utente
+            if driver.ser and driver.ser.is_open:
+                print("! Disconnetti (Opzione 0 o riavvia) prima di cambiare porta.")
+                continue
+                
+            # Selezione Porta
+            print("Seleziona Porta COM:")
+            p_sel = input("Premi 1 per COM1, 2 per COM2 [Invio=COM1]: ")
+            if p_sel == '2':
+                driver.port = 'COM2'
+            else:
+                driver.port = 'COM1'
+            
+            # Tenta connessione
+            driver.connetti()
+            
         elif sel == '2': driver.inizializza()
         elif sel == '3': driver.get_performance()
         elif sel == '4': driver.get_error()
